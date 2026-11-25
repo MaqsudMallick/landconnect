@@ -5,6 +5,7 @@ import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { colors } from '@/lib/theme';
 import { AuthProvider, useAuth } from '@/providers/AuthProvider';
+import { ServerProvider } from '@/providers/ServerProvider';
 
 registerGlobals();
 setLogLevel('error');
@@ -49,9 +50,11 @@ function RootNavigator() {
 export default function RootLayout() {
   return (
     <SafeAreaProvider>
-      <AuthProvider>
-        <RootNavigator />
-      </AuthProvider>
+      <ServerProvider>
+        <AuthProvider>
+          <RootNavigator />
+        </AuthProvider>
+      </ServerProvider>
     </SafeAreaProvider>
   );
 }

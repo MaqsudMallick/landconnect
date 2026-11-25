@@ -44,7 +44,7 @@ Technical documentation: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). AI tools 
 mobile/                 Expo app (TypeScript)
   src/app/              Screens (Expo Router file-based routes)
   src/components/       UI building blocks (map, call stage, cards…)
-  src/providers/        Auth session and incoming-call handling
+  src/providers/        Backend selection, auth session and incoming-call handling
   src/hooks/            Data and call-media hooks
   src/lib/              Supabase client, types, formatting, image upload
 supabase/
@@ -109,6 +109,7 @@ Prerequisites: Node 20 or later, Docker, the Android SDK with Java 17, and an An
    npx expo run:android
    ```
    LiveKit needs native code, so the app does not run in Expo Go. `expo run:android` builds a development build.
+6. **Or use the released APK against your backend.** On the sign-in screen, tap **Server** and enter `http://<your LAN IP>:54321` and the anon key. The app checks that the server answers before saving, and no rebuild is needed. An Android emulator on the same computer can use `http://10.0.2.2:54321`.
 
 ## Deploying the backend (Supabase cloud and LiveKit Cloud)
 
@@ -143,5 +144,6 @@ The APK is written to `mobile/android/app/build/outputs/apk/release/app-release.
 
 - **Incoming calls only ring while the app is open.** It can be in the foreground, or the call is picked up as soon as the app is opened within 45 seconds. Ringing a locked phone needs push notifications (FCM) and Android's ConnectionService (for example `react-native-callkeep`); that is the next step.
 - **No email verification or password reset screens.** The prototype assumes email confirmation is off.
+- **The server can only be changed while signed out,** from the sign-in screen.
 - **Message delivery and read receipts are per conversation,** not per message.
 - **Photos are public URLs.** Listings are public anyway; nothing private is stored in Storage.

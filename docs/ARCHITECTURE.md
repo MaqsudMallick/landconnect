@@ -93,6 +93,7 @@ Meeting rooms use the same screen in a grid layout with a token for room `meetin
   - `(app)/(tabs)` holds the five tabs: Community, Map, Chats, Calls and You.
   - `(app)/listing`, `chat`, `call`, `meeting`, `user` and `settings` are the stack screens.
 - **Access control:** `Stack.Protected` guards keep signed-out users on the auth screens.
+- **`ServerProvider`** decides which Supabase backend the app talks to: the one built into the APK, or one saved from the Server screen on the sign-in page. `lib/supabase.ts` exports a proxy to the active client, so switching servers remounts the session without a rebuild.
 - **`AuthProvider`** keeps the Supabase session (persisted in AsyncStorage, refreshed while the app is in the foreground) and the current profile.
 - **`CallProvider`** subscribes to incoming calls for the signed-in user, shows the incoming-call sheet and exposes `startCall()`.
 - **`hooks/useCallMedia.ts`** requests microphone and camera permission, configures the audio session and fetches the LiveKit token.

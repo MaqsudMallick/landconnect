@@ -5,15 +5,22 @@ import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, Vi
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '@/components/Button';
 import { TextField } from '@/components/TextField';
-import { errorMessage, supabase } from '@/lib/supabase';
+import { errorMessage, isServerConfigured, supabase } from '@/lib/supabase';
 import { colors, spacing } from '@/lib/theme';
+import { useServerSettings } from '@/providers/ServerProvider';
 
 export default function SignInScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const { server } = useServerSettings();
+  const serverReady = isServerConfigured(server);
 
   const signIn = async () => {
+    if (!serverReady) {
+      Alert.alert('Sign in', 'Set the server first: tap Server below the form.');
+      return;
+    }
     if (!email.trim() || !password) {
       Alert.alert('Sign in', 'Enter your email and password.');
       return;
@@ -43,6 +50,9 @@ export default function SignInScreen() {
               New here? <Text style={styles.linkStrong}>Create an account</Text>
             </Link>
           </View>
+          <Link href="/server" style={styles.server}>
+            Server: <Text style={styles.serverHost}>{serverReady ? serverHost(server.url) : 'not set'}</Text>
+          </Link>
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -60,4 +70,10 @@ const styles = StyleSheet.create({
   form: { gap: spacing.lg },
   link: { textAlign: 'center', color: colors.textMuted, fontSize: 15, marginTop: spacing.sm },
   linkStrong: { color: colors.primary, fontWeight: '700' },
+  server: { textAlign: 'center', color: colors.textMuted, fontSize: 13 },
+  serverHost: { color: colors.primary, fontWeight: '600' },
 });
+
+function serverHost(url: string) {
+  return url.replace(/^https?:\/\//, '');
+}
