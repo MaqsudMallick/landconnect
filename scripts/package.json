@@ -1,0 +1,12 @@
+{
+  "name": "landconnect-scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:rls": "node rls.test.mjs",
+    "seed": "node seed.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.119.2"
+  }
+}
