@@ -14,7 +14,7 @@ Technical documentation: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). AI tools 
 ## Demo
 
 - **Video (4.5 minutes):** [watch in the browser](https://maqsudmallick.github.io/landconnect/) or [download landconnect-demo.mp4](https://github.com/MaqsudMallick/landconnect/releases/latest/download/landconnect-demo.mp4). Two Android emulators side by side, a buyer and a seller: browsing, the map, chat, video and voice calls (accept, decline, cancel, hang up), the call log, posting a listing, a meeting room and the privacy settings.
-- **Android app:** [LandConnect.apk](https://github.com/MaqsudMallick/landconnect/releases/latest/download/LandConnect.apk) (phones and emulators). It needs the backend from [Running it locally](#running-it-locally); the [release notes](https://github.com/MaqsudMallick/landconnect/releases/latest) explain how to point it at your server.
+- **Android app:** [LandConnect.apk](https://github.com/MaqsudMallick/landconnect/releases/latest/download/LandConnect.apk) (phones and emulators). It connects to a hosted backend (Supabase and LiveKit Cloud), so you can install it and sign in with the demo accounts below. To use your own backend instead, tap **Server** on the sign-in screen.
 
 ## Features
 
@@ -59,7 +59,7 @@ docs/                   Architecture notes and AI usage summary
 
 ## Demo accounts
 
-`node scripts/seed.mjs` creates these accounts. The password for all three is `LandConnect@2026`.
+These accounts exist on the hosted backend, and `node scripts/seed.mjs` creates them on your own. The password for all three is `LandConnect@2026`.
 
 | Role | Email |
 |---|---|
