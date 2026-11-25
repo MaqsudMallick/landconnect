@@ -13,8 +13,8 @@ Technical documentation: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). AI tools 
 
 ## Demo
 
-- **Video (4.5 minutes):** [landconnect-demo.mp4](https://github.com/MaqsudMallick/landconnect/releases/latest/download/landconnect-demo.mp4). Two Android emulators side by side, a buyer and a seller: browsing, the map, chat, video and voice calls (accept, decline, cancel, hang up), the call log, posting a listing, a meeting room and the privacy settings.
-- **Android app:** the APK is attached to the [latest release](https://github.com/MaqsudMallick/landconnect/releases/latest), with notes on which backend it connects to.
+- **Video (4.5 minutes):** [watch in the browser](https://maqsudmallick.github.io/landconnect/) or [download landconnect-demo.mp4](https://github.com/MaqsudMallick/landconnect/releases/latest/download/landconnect-demo.mp4). Two Android emulators side by side, a buyer and a seller: browsing, the map, chat, video and voice calls (accept, decline, cancel, hang up), the call log, posting a listing, a meeting room and the privacy settings.
+- **Android app:** [LandConnect.apk](https://github.com/MaqsudMallick/landconnect/releases/latest/download/LandConnect.apk) (phones and emulators). It needs the backend from [Running it locally](#running-it-locally); the [release notes](https://github.com/MaqsudMallick/landconnect/releases/latest) explain how to point it at your server.
 
 ## Features
 
